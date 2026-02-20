@@ -9,11 +9,11 @@
 
   <h1 class="title">Funny Jokes</h1>
 
-  <button class="joke-button" id="jokeBtn">Get Joke</button>
-  <button class="punchline-button" id="punchBtn">Show Punchline</button>
+  <button id="jokeBtn">Get Joke</button>
+  <button id="punchBtn">Punchline</button>
 
-  <p class="setup-text" id="setup"></p>
-  <p class="punchline-text" id="punchline"></p>
+  <p id="setup"></p>
+  <p id="punchline"></p>
 
   <script>
     const jokeButton = document.getElementById("jokeBtn");
@@ -24,16 +24,11 @@
     let currentPunchline = "";
 
     jokeButton.addEventListener("click", async function() {
-      try {
         const response = await fetch("https://official-joke-api.appspot.com/random_joke");
         const data = await response.json();
 
         setupText.textContent = data.setup;
         currentPunchline = data.punchline;
-
-      } catch (error) {
-        setupText.textContent = "error";
-      }
     });
 
     punchButton.addEventListener("click", function() {
